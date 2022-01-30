@@ -5,7 +5,7 @@ function Header() {
     return (
         <HeaderEle>
             <h1>
-                <BlueSpan>Where</BlueSpan> is <RedSpan>Who?</RedSpan>
+                <BlueSpan>Where</BlueSpan>'s &nbsp;<RedSpan>Who?</RedSpan>
             </h1>
         </HeaderEle>
     );
