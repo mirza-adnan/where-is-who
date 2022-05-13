@@ -30,7 +30,7 @@ function Timer({ gameOngoing }) {
 }
 
 const P = styled.p`
-    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
 `;
 
 export default Timer;
