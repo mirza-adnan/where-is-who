@@ -20,9 +20,14 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: "Sansita Swashed", sans-serif;
+        font-family: "Sansita", sans-serif;
         background: #222;
         color: var(--clr-text);
+    }
+
+    #root {
+        display: flex;
+        flex-direction: column;
     }
 `;
 
