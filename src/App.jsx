@@ -5,6 +5,7 @@ import SelectionScreen from "./components/SelectionScreen";
 import Level from "./components/Level";
 import { useState } from "react";
 import levelsData from "./data/data";
+import { LevelContext } from "./context/LevelContext";
 
 function App() {
     const [display, setDisplay] = useState("selection");
@@ -17,6 +18,7 @@ function App() {
         setDisplay("game");
         const level = levels.find((level) => level.id === id);
         setCurrLevel(level);
+        window.scroll(0, 0);
     };
 
     const handleMouseEnter = (id) => {
@@ -26,13 +28,15 @@ function App() {
 
     return (
         <>
-            <Header
-                gameOngoing={display === "game"}
-                characters={currLevel.characters}
-            />
-            <Main>
-                <Level currLevel={currLevel} />
-            </Main>
+            <LevelContext.Provider value={{ currLevel, setCurrLevel }}>
+                <Header
+                    gameOngoing={display === "game"}
+                    characters={currLevel.characters}
+                />
+                <Main>
+                    <Level />
+                </Main>
+            </LevelContext.Provider>
             {showModal && (
                 <ModalBg>
                     {display === "selection" && (
@@ -50,6 +54,7 @@ function App() {
 
 const Main = styled.main`
     flex-grow: 1;
+    margin-top: 146px;
 `;
 
 export default App;
