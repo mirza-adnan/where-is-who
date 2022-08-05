@@ -21,7 +21,6 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-family: "Sansita", sans-serif;
-        background: #222;
         color: var(--clr-text);
     }
 
