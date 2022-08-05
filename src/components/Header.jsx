@@ -5,21 +5,31 @@ import styled from "styled-components";
 
 function Header({ gameOngoing, characters }) {
     return (
-        <HeaderEle gameOngoing={gameOngoing}>
-            <h1>
-                <BlueSpan>Where</BlueSpan>'s
-                <br />
-                <RedSpan>Who?</RedSpan>
-            </h1>
-            {gameOngoing && (
-                <>
-                    <Timer gameOngoing={gameOngoing} />
-                    <CharacterList characters={characters} />
-                </>
-            )}
-        </HeaderEle>
+        <Wrapper>
+            <HeaderEle gameOngoing={gameOngoing}>
+                <h1>
+                    <BlueSpan>Where</BlueSpan>'s
+                    <br />
+                    <RedSpan>Who?</RedSpan>
+                </h1>
+                {gameOngoing && (
+                    <>
+                        <Timer gameOngoing={gameOngoing} />
+                        <CharacterList characters={characters} />
+                    </>
+                )}
+            </HeaderEle>
+        </Wrapper>
     );
 }
+
+const Wrapper = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+`;
 
 const HeaderEle = styled.header`
     padding: 1.5rem 0.2rem;
@@ -30,7 +40,7 @@ const HeaderEle = styled.header`
     font-size: 1.3rem;
     position: relative;
     z-index: 1000;
-    background: #222;
+    background-color: #222222;
 
     & h1 {
         font-family: "Sansita Swashed", sans-serif;
