@@ -5,18 +5,19 @@ import LevelPreview from "./LevelPreview";
 function SelectionScreen({ levels, handlePlayClick, handleMouseEnter }) {
     return (
         <Container>
-            {levels.map((level, index) => {
-                return (
-                    <LevelPreview
-                        level={level}
-                        index={index}
-                        key={level.id}
-                        id={level.id}
-                        handlePlayClick={handlePlayClick}
-                        handleMouseEnter={handleMouseEnter}
-                    />
-                );
-            })}
+            {levels &&
+                levels.map((level, index) => {
+                    return (
+                        <LevelPreview
+                            level={level}
+                            index={index}
+                            key={level.id}
+                            id={level.id}
+                            handlePlayClick={handlePlayClick}
+                            handleMouseEnter={handleMouseEnter}
+                        />
+                    );
+                })}
         </Container>
     );
 }

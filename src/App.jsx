@@ -3,15 +3,17 @@ import Header from "./components/Header";
 import ModalBg from "./components/ModalBg";
 import SelectionScreen from "./components/SelectionScreen";
 import Level from "./components/Level";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import levelsData from "./data/data";
 import { LevelContext } from "./context/LevelContext";
+import { db } from "./config/firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 function App() {
     const [display, setDisplay] = useState("selection");
     const [showModal, setShowModal] = useState(true);
     const [levels, setLevels] = useState(levelsData);
-    const [currLevel, setCurrLevel] = useState(levels[0]);
+    const [currLevel, setCurrLevel] = useState(levelsData[0]);
 
     const handlePlayClick = (id) => {
         setShowModal(false);
@@ -25,6 +27,29 @@ function App() {
         const level = levels.find((level) => level.id === id);
         setCurrLevel(level);
     };
+
+    useEffect(() => {
+        const getLevels = async () => {
+            // getting the levels without the characters
+            const querySnapshot = await getDocs(collection(db, "levels"));
+            const data = querySnapshot.docs.map((doc) => {
+                return { ...doc.data(), id: doc.id };
+            });
+
+            // adding the characters to the levels
+            const levels = data.map(async (level) => {
+                const charactersSnapshots = await getDocs(
+                    collection(db, `levels/${level.id}/characters`)
+                );
+                const characters = charactersSnapshots.docs.map((doc) => {
+                    return { ...doc.data(), id: doc.id };
+                });
+                return { ...level, characters };
+            });
+        };
+
+        getLevels();
+    }, []);
 
     return (
         <>
