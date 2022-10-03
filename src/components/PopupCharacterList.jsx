@@ -6,7 +6,6 @@ import { getScaledCoords } from "../utils/functions";
 function PopupCharacterList({ showList, coordsData }) {
     const { currLevel, setCurrLevel } = useContext(LevelContext);
     const { characters } = currLevel;
-
     const handleClick = (id, coordsData) => {
         const [x, y] = getScaledCoords(coordsData);
 
@@ -34,16 +33,17 @@ function PopupCharacterList({ showList, coordsData }) {
 
     return (
         <List showList={showList} coordsData={coordsData}>
-            {characters.map((character) => (
-                <ListItem
-                    onClick={() => handleClick(character.id, coordsData)}
-                    found={character.found}
-                    key={character.id}>
-                    <img src={character.image} alt={character.name} />
-                    <p>{character.name}</p>
-                    {character.found && <Line></Line>}
-                </ListItem>
-            ))}
+            {characters &&
+                characters.map((character) => (
+                    <ListItem
+                        onClick={() => handleClick(character.id, coordsData)}
+                        found={character.found}
+                        key={character.id}>
+                        <img src={character.image} alt={character.name} />
+                        <p>{character.name}</p>
+                        {character.found && <Line></Line>}
+                    </ListItem>
+                ))}
         </List>
     );
 }
