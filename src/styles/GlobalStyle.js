@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         --clr-bg: #030613;
         --clr-text: #f7f8f3;
         --clr-sub: #78bcc4;
-        --clr-accent: #f7444e
+        --clr-accent: #f7444e;
     }
 
     *, *::after, *::before {

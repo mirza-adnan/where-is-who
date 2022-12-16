@@ -6,3 +6,11 @@ export const getScaledCoords = ({ x, y, width, height }) => {
 
     return [scaledX, scaledY];
 };
+
+export const getMinutes = (time) => {
+    return ("0" + Math.floor(time / 60000)).slice(-2);
+};
+
+export const getSeconds = (time) => {
+    return ("0" + Math.floor((time / 1000) % 60)).slice(-2);
+};
