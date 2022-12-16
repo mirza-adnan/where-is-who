@@ -7,12 +7,13 @@ function ModalBg(props) {
 
 const Div = styled.div`
     position: fixed;
-    height: 100vh;
+    height: calc(100vh - 146px);
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.85);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin-top: 146px;
 `;
 
 export default ModalBg;
