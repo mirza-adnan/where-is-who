@@ -24,7 +24,7 @@ const Container = styled.div`
     background-color: var(--clr-text);
     color: var(--clr-bg);
     border-radius: 20px;
-    font-size: 1.3rem;
+    font-size: clamp(1.2rem, 4vw, 1.3rem);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     justify-content: center;
     align-items: center;
