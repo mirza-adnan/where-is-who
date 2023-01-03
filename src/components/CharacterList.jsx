@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DefaultButton from "../styles/Button.style";
 
 function CharacterList({ characters }) {
-    const [showList, setShowList] = useState(false);
+    const [showHeaderList, setShowHeaderList] = useState(false);
 
     const numOfRemaining = characters.reduce((total, curr) => {
         if (!curr.found) return total + 1;
@@ -11,15 +11,15 @@ function CharacterList({ characters }) {
     }, 0);
 
     const handleClick = () => {
-        setShowList((prev) => !prev);
+        setShowHeaderList((prev) => !prev);
     };
 
     return (
         <Div>
-            <Button onClick={handleClick} showList={showList}>
+            <Button onClick={handleClick} showList={showHeaderList}>
                 {numOfRemaining}
             </Button>
-            <List showList={showList}>
+            <List showList={showHeaderList}>
                 {characters.map((item) => (
                     <ListItem key={item.id} found={item.found}>
                         <img src={item.image} alt={item.name} />
@@ -38,8 +38,12 @@ const Div = styled.div`
 `;
 
 const Button = styled(DefaultButton)`
-    width: 50px;
-    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 45px;
+    min-height: 45px;
+    height: 10vw;
+    width: 10vw;
     background-color: var(
         --clr-${(props) => (props.showList ? "text" : "accent")}
     );
