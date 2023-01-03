@@ -2,9 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import DefaultButton from "../styles/Button.style";
 
-function LevelPreview(props) {
-    const { name, image, characters } = props.level;
-    const { index, handlePlayClick, handleMouseEnter, id } = props;
+function LevelPreview({
+    level,
+    index,
+    handlePlayClick,
+    handleMouseEnter,
+    id,
+    handleLeaderboardClick,
+}) {
+    const { name, image } = level;
 
     const fgColor = index % 2 === 0 ? "var(--clr-bg)" : "var(--clr-bg)";
     const bgColor = index % 2 === 0 ? "var(--clr-accent)" : "var(--clr-sub)";
@@ -20,7 +26,9 @@ function LevelPreview(props) {
                 <PlayButton onClick={() => handlePlayClick(id)}>
                     Play
                 </PlayButton>
-                <Button>Leaderboard</Button>
+                <Button onClick={() => handleLeaderboardClick(id)}>
+                    Leaderboard
+                </Button>
             </ButtonsContainer>
         </PreviewContainer>
     );
@@ -45,7 +53,7 @@ const Button = styled(DefaultButton)`
     transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
     font-weight: 500;
     font-family: "Sansita", sans-serif;
-    font-size: 1.4rem;
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
 `;
 
 const PlayButton = styled(Button)``;
@@ -54,8 +62,9 @@ const PreviewContainer = styled.div`
     background: url(${(props) => props.image});
     background-repeat: no-repeat;
     background-position: 5% 80%;
-    height: 600px;
-    width: 300px;
+    height: 63vh;
+    max-width: 300px;
+    width: 80vw;
     transition: transform 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -63,7 +72,7 @@ const PreviewContainer = styled.div`
     align-items: center;
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.02);
     }
 
     ${LevelTitle} {
@@ -79,7 +88,7 @@ const PreviewContainer = styled.div`
 
 const ButtonsContainer = styled.div`
     width: 100%;
-    margin-bottom: 20%;
+    margin-bottom: 3vh;
 `;
 
 export default LevelPreview;

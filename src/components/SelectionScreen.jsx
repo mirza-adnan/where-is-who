@@ -1,23 +1,42 @@
 import React from "react";
 import styled from "styled-components";
 import LevelPreview from "./LevelPreview";
+import PreviewSlider from "./PreviewSlider";
 
-function SelectionScreen({ levels, handlePlayClick, handleMouseEnter }) {
+function SelectionScreen({
+    levels,
+    handlePlayClick,
+    handleMouseEnter,
+    handleLeaderboardClick,
+    setCurrLevel,
+}) {
+    // return (
+    //     <Container>
+    //         {levels?.map((level, index) => {
+    //             return (
+    //                 <LevelPreview
+    //                     level={level}
+    //                     index={index}
+    //                     key={level.id}
+    //                     id={level.id}
+    //                     handlePlayClick={handlePlayClick}
+    //                     handleMouseEnter={handleMouseEnter}
+    //                     handleLeaderboardClick={handleLeaderboardClick}
+    //                 />
+    //             );
+    //         })}
+    //     </Container>
+    // );
+
     return (
         <Container>
-            {levels &&
-                levels.map((level, index) => {
-                    return (
-                        <LevelPreview
-                            level={level}
-                            index={index}
-                            key={level.id}
-                            id={level.id}
-                            handlePlayClick={handlePlayClick}
-                            handleMouseEnter={handleMouseEnter}
-                        />
-                    );
-                })}
+            <PreviewSlider
+                levels={levels}
+                handlePlayClick={handlePlayClick}
+                handleMouseEnter={handleMouseEnter}
+                handleLeaderboardClick={handleLeaderboardClick}
+                setCurrLevel={setCurrLevel}
+            />
         </Container>
     );
 }
