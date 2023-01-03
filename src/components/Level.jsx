@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import PopupCharacterList from "./PopupCharacterList";
 import { LevelContext } from "../context/LevelContext";
+import LocNar from "../assets/the-loc-nar.jpg";
 
-function Level() {
+function Level({ showEndingScreen, shouldBeInLB, setShowNameInput }) {
     const { currLevel } = useContext(LevelContext);
     const [showList, setShowList] = useState(false);
     const [coordsData, setCoordsData] = useState({
@@ -65,15 +66,27 @@ function Level() {
 
     return (
         <Container>
-            <Img src={currLevel.image} onClick={handleClick} />
-            <PopupCharacterList showList={showList} coordsData={coordsData} />
+            <Img
+                src={currLevel.image ? currLevel.image : LocNar}
+                onClick={handleClick}
+            />
+            <PopupCharacterList
+                showList={showList}
+                setShowList={setShowList}
+                coordsData={coordsData}
+                showEndingScreen={showEndingScreen}
+                shouldBeInLB={shouldBeInLB}
+                setShowNameInput={setShowNameInput}
+            />
         </Container>
     );
 }
 
 const Container = styled.div`
     width: 100%;
+    height: 100%;
     position: relative;
+    background-color: var(--clr-bg);
 `;
 
 const Img = styled.img`

@@ -3,15 +3,20 @@ import styled from "styled-components";
 import { LevelContext } from "../context/LevelContext";
 import { getScaledCoords } from "../utils/functions";
 
-function PopupCharacterList({ showList, coordsData }) {
+function PopupCharacterList({
+    showList,
+    setShowList,
+    coordsData,
+    showEndingScreen,
+    shouldBeInLB,
+    setShowNameInput,
+}) {
     const { currLevel, setCurrLevel } = useContext(LevelContext);
     const { characters } = currLevel;
     const handleClick = (id, coordsData) => {
         const [x, y] = getScaledCoords(coordsData);
 
-        const character = currLevel.characters.find(
-            (character) => character.id === id
-        );
+        const character = characters.find((character) => character.id === id);
 
         if (
             x >= character.minX &&
@@ -29,21 +34,32 @@ function PopupCharacterList({ showList, coordsData }) {
 
             setCurrLevel({ ...currLevel, characters: newCharacters });
         }
+        const allFound = currLevel.characters.every(
+            (character) => character.found
+        );
+        if (allFound) {
+            setShowList(false);
+            showEndingScreen();
+            const hasPlayedOnce = !!localStorage.getItem(`${currLevel.id}`);
+            if (shouldBeInLB() && !hasPlayedOnce) {
+                setShowNameInput(true);
+            }
+            localStorage.setItem(`${currLevel.id}`, true);
+        }
     };
 
     return (
         <List showList={showList} coordsData={coordsData}>
-            {characters &&
-                characters.map((character) => (
-                    <ListItem
-                        onClick={() => handleClick(character.id, coordsData)}
-                        found={character.found}
-                        key={character.id}>
-                        <img src={character.image} alt={character.name} />
-                        <p>{character.name}</p>
-                        {character.found && <Line></Line>}
-                    </ListItem>
-                ))}
+            {characters?.map((character) => (
+                <ListItem
+                    onClick={() => handleClick(character.id, coordsData)}
+                    found={character.found}
+                    key={character.id}>
+                    <img src={character.image} alt={character.name} />
+                    <p>{character.name}</p>
+                    {character.found && <Line></Line>}
+                </ListItem>
+            ))}
         </List>
     );
 }
@@ -63,10 +79,10 @@ const List = styled.div`
     min-width: 200px;
     background-color: var(--clr-text);
     border-radius: 5px;
+    transition: transform 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
     transform: scale(${(props) => (props.showList ? "1" : "0")});
-    transition: transform 0.2s ease-in-out;
     transform-origin: ${(props) => {
         let value = "";
         props.coordsData.fromBottom ? (value += "bottom ") : (value += "top ");
