@@ -61,7 +61,7 @@ function App() {
     };
 
     const shouldBeInLB = () => {
-        const lessThanTen = currLevel.leaderboard.length < 10;
+        const lessThanTen = currLevel.leaderboard.length < 20;
         const isAboveSomeone = currLevel.leaderboard.some(
             (player) => time < player.time
         );
@@ -103,7 +103,7 @@ function App() {
 
             let newLeaderBoard = currLevel.leaderboard.concat(submission);
             newLeaderBoard = sortLeaderboard(newLeaderBoard);
-            newLeaderBoard = newLeaderBoard.slice(0, 10);
+            newLeaderBoard = newLeaderBoard.slice(0, 20);
 
             const docRef = doc(db, "levels", currLevel?.id);
             updateDoc(docRef, { leaderboard: newLeaderBoard });
