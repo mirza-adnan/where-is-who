@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.js": "/where-is-who/static/js/main.8cf56fa0.js",
+    "static/media/the-loc-nar.jpg": "/where-is-who/static/media/the-loc-nar.314cec99f414807b7e27.jpg",
+    "static/media/universe-113.jpg": "/where-is-who/static/media/universe-113.3a6b5b846210d2207c02.jpg",
+    "static/media/waldo.png": "/where-is-who/static/media/waldo.1c60a84f505b4b904535.png",
+    "static/media/meg.png": "/where-is-who/static/media/meg.1f66740ea1177a00bfc7.png",
+    "static/media/wilson.png": "/where-is-who/static/media/wilson.0178ac9b7b496ef17009.png",
+    "static/media/courage.png": "/where-is-who/static/media/courage.16847ea2b39868d9e6bc.png",
+    "static/media/batman.png": "/where-is-who/static/media/batman.149fc0aba04aad741bef.png",
+    "static/media/totoro.png": "/where-is-who/static/media/totoro.c5fcd6997d9ddde24e58.png",
+    "index.html": "/where-is-who/index.html",
+    "main.8cf56fa0.js.map": "/where-is-who/static/js/main.8cf56fa0.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.8cf56fa0.js"
+  ]
+}
