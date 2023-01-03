@@ -3,18 +3,22 @@ import Timer from "./Timer";
 import CharacterList from "./CharacterList";
 import styled from "styled-components";
 
-function Header({ gameOngoing, characters }) {
+function Header({ gameOngoing, characters, time, setTime, reset }) {
     return (
         <Wrapper>
             <HeaderEle gameOngoing={gameOngoing}>
-                <h1>
+                <h1 onClick={reset}>
                     <BlueSpan>Where</BlueSpan>'s
                     <br />
                     <RedSpan>Who?</RedSpan>
                 </h1>
                 {gameOngoing && (
                     <>
-                        <Timer gameOngoing={gameOngoing} />
+                        <Timer
+                            gameOngoing={gameOngoing}
+                            time={time}
+                            setTime={setTime}
+                        />
                         <CharacterList characters={characters} />
                     </>
                 )}
@@ -32,12 +36,13 @@ const Wrapper = styled.div`
 `;
 
 const HeaderEle = styled.header`
-    padding: 1.5rem 0.2rem;
+    padding: 1.5em 0.2rem;
     display: flex;
+    height: 146px;
     justify-content: ${(props) =>
         props.gameOngoing ? "space-around" : "center"};
     align-items: center;
-    font-size: 1.3rem;
+    font-size: clamp(0.9rem, 4vw, 1.3rem);
     position: relative;
     z-index: 1000;
     background-color: #222222;
@@ -45,6 +50,7 @@ const HeaderEle = styled.header`
     & h1 {
         font-family: "Sansita Swashed", sans-serif;
         text-align: center;
+        cursor: pointer;
     }
 `;
 
