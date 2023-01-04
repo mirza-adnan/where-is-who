@@ -70,6 +70,7 @@ const PreviewContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 
     &:hover {
         transform: scale(1.02);

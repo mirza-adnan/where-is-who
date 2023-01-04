@@ -38,7 +38,7 @@ const Wrapper = styled.div`
 const HeaderEle = styled.header`
     padding: 1.5em 0.2rem;
     display: flex;
-    height: 146px;
+    height: var(--header-height);
     justify-content: ${(props) =>
         props.gameOngoing ? "space-around" : "center"};
     align-items: center;

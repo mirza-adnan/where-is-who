@@ -188,7 +188,7 @@ function App() {
 
 const Main = styled.main`
     flex-grow: 1;
-    margin-top: 146px;
+    margin-top: var(--header-height);
     overflow: ${(props) => (!props.gameOngoing ? "hidden" : "visible")};
 `;
 

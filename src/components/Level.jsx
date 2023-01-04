@@ -49,6 +49,7 @@ function Level({ showEndingScreen, shouldBeInLB, setShowNameInput }) {
                 } else {
                     fromBottom = false;
                 }
+
                 setCoordsData({
                     x,
                     y,
