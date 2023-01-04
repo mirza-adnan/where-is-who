@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/where-is-who/static/js/main.af52ee1a.js",
+    "main.js": "/where-is-who/static/js/main.9b856718.js",
     "static/media/the-loc-nar.jpg": "/where-is-who/static/media/the-loc-nar.314cec99f414807b7e27.jpg",
     "static/media/universe-113.jpg": "/where-is-who/static/media/universe-113.3a6b5b846210d2207c02.jpg",
     "static/media/waldo.png": "/where-is-who/static/media/waldo.1c60a84f505b4b904535.png",
@@ -10,9 +10,9 @@
     "static/media/batman.png": "/where-is-who/static/media/batman.149fc0aba04aad741bef.png",
     "static/media/totoro.png": "/where-is-who/static/media/totoro.c5fcd6997d9ddde24e58.png",
     "index.html": "/where-is-who/index.html",
-    "main.af52ee1a.js.map": "/where-is-who/static/js/main.af52ee1a.js.map"
+    "main.9b856718.js.map": "/where-is-who/static/js/main.9b856718.js.map"
   },
   "entrypoints": [
-    "static/js/main.af52ee1a.js"
+    "static/js/main.9b856718.js"
   ]
 }
